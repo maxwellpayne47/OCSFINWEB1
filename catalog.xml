@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
+    <system systemId="https://icraf.ocs.cgiar.org/Agressowshost/service.svc?RateService/RateV201010" uri="src/conf/xml-resources/web-services/Rate_WS/wsdl/icraf.ocs.cgiar.org/Agressowshost/service.svc.rateservice/ratev201010.wsdl"/>
+    <system systemId="http://icrafke-0019027.cgiarad.org/agresso-webservices/service.svc?QueryEngineService/QueryEngineV201101" uri="src/conf/xml-resources/web-services/QueryEngine_WS/wsdl/icrafke-0019027.cgiarad.org/agresso-webservices/service.svc.queryengineservice/queryenginev201101.wsdl"/>
+    <system systemId="https://icraf.ocs.cgiar.org/Agressowshost/service.svc?QueryEngineService/QueryEngineV201101" uri="src/conf/xml-resources/web-services/QueryEngine_WS/wsdl/icraf.ocs.cgiar.org/Agressowshost/service.svc.queryengineservice/queryenginev201101.wsdl"/>
+</catalog>
