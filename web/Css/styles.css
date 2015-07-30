@@ -1,0 +1,147 @@
+@charset "utf-8";
+/* CSS Document */
+#mainbody
+{
+	min-width:1500px;
+	height:800px;
+	margin-left:auto;
+	margin-right:auto;
+	position:relative;	
+	
+}
+#titles
+{
+	width:80%;
+	height: auto;
+	position:relative;
+	margin-left:auto;
+	margin-right:auto;
+	nbackground-color:#900;
+        top:1%;
+}
+#login_div
+{
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    width:80%;
+    height: auto;
+    top:10px;
+    
+}
+#contentbody
+{
+	position:relative;
+	etop:5%;
+	width:80%;
+	min-height:1000px;
+	margin-left:auto;
+	margin-right:auto;
+	nbackground-color:#00F;
+        border-style:solid;
+	border-width:thin;
+        border-radius: 10px;
+	
+}
+#finwebdetails_div
+{
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    width:90%;
+    height:auto;
+    top: 10px;
+}
+#staffstatement_div
+{
+    width:90%;
+    height: auto;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    top: 15px;
+}
+#staffdetails_div
+{
+    width:60%;
+    height: auto;
+    position: relative;
+    left: 65px;    
+    top: 15px;
+    
+}
+.boldtexts
+{
+    font-size: 20px;
+    font-weight:  bold;
+}
+.lessboldtexts
+{
+    font-size: 17px;
+    font-weight:  bold;
+    sfont-style:italic;
+}
+#finweb-header_htmltbl
+{
+	font-size:14px;	
+	font-weight:bold;
+	color:#FFF;
+	
+	background-color:#666;
+	text-align:center;
+	
+}
+
+#finweb-footer_htmltbl
+{
+	font-size:14px;	
+	font-weight:bold;
+	color:#FFF;
+	background-color:#CCC;
+	text-align:center;
+	
+}
+.drilldown_link
+{
+	color:#930;
+	text-decoration:underline;
+	font-size:14px;
+	
+}
+#info-span
+{
+	font-size:16px !important;	
+	font-weight:bold !important;        
+}
+
+#summary-info
+{
+	font-size:20px;	
+	font-weight:bold !important;
+	color:#930;
+	text-decoration:underline !important;
+}
+
+#summary_links
+{
+	text-decoration:underline;
+	font-style:italic;
+	top:10px;	
+	
+}
+
+.sum_totals
+{
+	font-size:16px;
+	border-bottom:3px double; 
+	
+}
+#username_span
+{
+	float:right;	
+	text-decoration:underline;
+	color:#630;
+	font-size:14px;
+	
+}
+
