@@ -166,7 +166,7 @@ public class OCSFINWEBDAO_QEWS {
     
     }
     
-    public List getmainproj(String param, String myusername, String mypassword)throws Exception
+    public List getmainproj(String costc, String entity, String myusername, String mypassword)throws Exception
     {
         List response = new ArrayList();
         long id = templateId("MainProjects_FINWEBQEWS",myusername,mypassword);
@@ -174,38 +174,364 @@ public class OCSFINWEBDAO_QEWS {
         {
            if(id>0)
            {
-               SearchCriteria searchProp = queryengine_ws.getSearchCriteria(id, false, credentials);
+               SearchCriteria searchProp = queryengine_ws.getSearchCriteria(id, true, credentials);
                InputForTemplateResult input = new InputForTemplateResult();
                ArrayOfSearchCriteriaProperties arrayofsearchcriteriaproperties = new ArrayOfSearchCriteriaProperties();
                TemplateResultOptions options = new TemplateResultOptions();
                options.setRemoveHiddenColumns(true);
                input.setTemplateResultOptions(options);
                input.setTemplateId(id);
-               SearchCriteriaProperties scp = new SearchCriteriaProperties();
-               /**/scp.setColumnName("Costc");
+               //SearchCriteriaProperties scp = new SearchCriteriaProperties();
+               //scp.setColumnName("Costc");
                //scp.setIsPrompt(true);
-               scp.setIsPrompt(true);
-               scp.setFromValue("1101");
-               /*for(SearchCriteriaProperties scp : searchProp.getSearchCriteriaPropertiesList().getSearchCriteriaProperties())
+               //scp.setIsPrompt(true);
+               //scp.setFromValue("1101");
+               for(SearchCriteriaProperties scp : searchProp.getSearchCriteriaPropertiesList().getSearchCriteriaProperties())
                {
-                   if(scp.getColumnName().equals("Costc"))
+                   //String columnname = scp.getColumnName();
+                   if(scp.getColumnName().equals("dim2"))
                    {
-                       scp.setFromValue("2101");
+                       scp.setFromValue(costc);
+                       arrayofsearchcriteriaproperties.getSearchCriteriaProperties().add(scp);
                    
-                   }*/
+                   }
+                   if(scp.getColumnName().equals("dim5"))
+                   {
+                       scp.setFromValue(entity);
+                       arrayofsearchcriteriaproperties.getSearchCriteriaProperties().add(scp);
+                   
+                   }
+                   
+                   
+                   
                     
+                   
+                   
+                   //arrayofsearchcriteriaproperties.getSearchCriteriaProperties().add(scp);
+                   //response.add(columnname);
+                   
+                  
+               }
+               //response.add(searchProp.getSearchCriteriaPropertiesList().);
+               //response.add(arrayofsearchcriteriaproperties.getSearchCriteriaProperties().get(0).getColumnName());
+               input.setSearchCriteriaPropertiesList(arrayofsearchcriteriaproperties);
+               
+               
+               TemplateResultAsXML results = queryengine_ws.getTemplateResultAsXML(input, credentials(myusername,mypassword));
+               
+               OCSFINWEBBean ocsfinwebbean = new OCSFINWEBBean();
+               
+               ocsfinwebbean.setXmlData(results.getTemplateResult());
+              
+               response.add(ocsfinwebbean);
+               
+               
+               
+           
+           }
+           else
+           {
+               throw new Exception("Cannot find browser template MainProjFINWEBQEWS");
+           
+           }
+            
+        
+        }
+        catch(Exception ex)
+        {
+            throw new Exception(ex);
+        
+        }
+        
+        
+        return response;
+    
+    }
+    
+    public List getchargecodes(String costc, String mainproj, String entity, String myusername, String mypassword) throws Exception
+    {
+        List response = new ArrayList();
+        long id = templateId("ChargeCodes_FINWEBQEWS",myusername,mypassword);
+        try
+        {
+           if(id>0)
+           {
+               SearchCriteria searchProp = queryengine_ws.getSearchCriteria(id, true, credentials);
+               InputForTemplateResult input = new InputForTemplateResult();
+               ArrayOfSearchCriteriaProperties arrayofsearchcriteriaproperties = new ArrayOfSearchCriteriaProperties();
+               TemplateResultOptions options = new TemplateResultOptions();
+               options.setRemoveHiddenColumns(true);
+               input.setTemplateResultOptions(options);
+               input.setTemplateId(id);
+               //SearchCriteriaProperties scp = new SearchCriteriaProperties();
+               //scp.setColumnName("Costc");
+               //scp.setIsPrompt(true);
+               //scp.setIsPrompt(true);
+               //scp.setFromValue("1101");
+               for(SearchCriteriaProperties scp : searchProp.getSearchCriteriaPropertiesList().getSearchCriteriaProperties())
+               {
+                   /*activate 1 check columnsString columnname = scp.getColumnName();*/
+                   if(scp.getColumnName().equals("dim2"))
+                   {
+                       scp.setFromValue(costc);
+                       arrayofsearchcriteriaproperties.getSearchCriteriaProperties().add(scp);
+                   
+                   }
+                   if(scp.getColumnName().equals("dim5"))
+                   {
+                       scp.setFromValue(entity);
+                       arrayofsearchcriteriaproperties.getSearchCriteriaProperties().add(scp);
+                   
+                   }
+                   if(scp.getColumnName().equals("r0dim3"))
+                   {
+                       scp.setFromValue(mainproj);
+                       arrayofsearchcriteriaproperties.getSearchCriteriaProperties().add(scp);
+                   }
+                   
+                   
                     
-                    //scp.setDataType(1);
-                   // scp.setCanBeOverridden(true);
-                    scp.setRestrictionType("");                    
-                    //scp.setIsPrompt(true);
+                   
+                   
+                   //arrayofsearchcriteriaproperties.getSearchCriteriaProperties().add(scp);
+                   
+                   /*activate 2response.add(columnname);*/
+                   
+                  
+               }
+               //response.add(searchProp.getSearchCriteriaPropertiesList().getSearchCriteriaProperties());
+               //response.add(arrayofsearchcriteriaproperties.getSearchCriteriaProperties().get(0).getColumnName());
+               input.setSearchCriteriaPropertiesList(arrayofsearchcriteriaproperties);
+               
+               
+               /**/TemplateResultAsXML results = queryengine_ws.getTemplateResultAsXML(input, credentials(myusername,mypassword));
+               
+               OCSFINWEBBean ocsfinwebbean = new OCSFINWEBBean();
+               
+               ocsfinwebbean.setXmlData(results.getTemplateResult());
+              
+               response.add(ocsfinwebbean);
+               
+               
+               
+           
+           }
+           else
+           {
+               throw new Exception("Cannot find browser template MainProjFINWEBQEWS");
+           
+           }
+            
+        
+        }
+        catch(Exception ex)
+        {
+            throw new Exception(ex);
+        
+        }
+        
+        return response;
+    
+    }
+    
+    public List getperaccountclass(String workorder, String entity, String myusername, String mypassword) throws Exception
+    {
+        List response = new ArrayList();
+        long id = templateId("PerAccountClass_FINWEBQEWS",myusername,mypassword);
+        try
+        {
+           if(id>0)
+           {
+               SearchCriteria searchProp = queryengine_ws.getSearchCriteria(id, true, credentials);
+               InputForTemplateResult input = new InputForTemplateResult();
+               ArrayOfSearchCriteriaProperties arrayofsearchcriteriaproperties = new ArrayOfSearchCriteriaProperties();
+               TemplateResultOptions options = new TemplateResultOptions();
+               options.setRemoveHiddenColumns(true);
+               input.setTemplateResultOptions(options);
+               input.setTemplateId(id);
+               //SearchCriteriaProperties scp = new SearchCriteriaProperties();
+               //scp.setColumnName("Costc");
+               //scp.setIsPrompt(true);
+               //scp.setIsPrompt(true);
+               //scp.setFromValue("1101");
+               for(SearchCriteriaProperties scp : searchProp.getSearchCriteriaPropertiesList().getSearchCriteriaProperties())
+               {
+                   /*activate 1 check columnsString columnname = scp.getColumnName();*/
+                   /**/if(scp.getColumnName().equals("dim4"))
+                   {
+                       scp.setFromValue(workorder);
+                       arrayofsearchcriteriaproperties.getSearchCriteriaProperties().add(scp);
+                   
+                   }
+                   if(scp.getColumnName().equals("dim5"))
+                   {
+                       scp.setFromValue(entity);
+                       arrayofsearchcriteriaproperties.getSearchCriteriaProperties().add(scp);
+                   }
+                   
+                   
+                    
+                   
+                   
+                   //arrayofsearchcriteriaproperties.getSearchCriteriaProperties().add(scp);
+                   
+                   /*activate 2response.add(columnname);*/
+                   
+                  
+               }
+               //response.add(searchProp.getSearchCriteriaPropertiesList().getSearchCriteriaProperties());
+               //response.add(arrayofsearchcriteriaproperties.getSearchCriteriaProperties().get(0).getColumnName());
+               input.setSearchCriteriaPropertiesList(arrayofsearchcriteriaproperties);
+               
+               
+               /**/TemplateResultAsXML results = queryengine_ws.getTemplateResultAsXML(input, credentials(myusername,mypassword));
+               
+               OCSFINWEBBean ocsfinwebbean = new OCSFINWEBBean();
+               
+               ocsfinwebbean.setXmlData(results.getTemplateResult());
+              
+               response.add(ocsfinwebbean);
+               
+               
+               
+           
+           }
+           else
+           {
+               throw new Exception("Cannot find browser template MainProjFINWEBQEWS");
+           
+           }
+            
+        
+        }
+        catch(Exception ex)
+        {
+            throw new Exception(ex);
+        
+        }
+        
+        return response;
+    
+    }
+    
+    public List getperaccount(String accountclass, String workorder, String entity, String myusername, String mypassword) throws Exception
+    {
+        List response = new ArrayList();
+        long id = templateId("PerAccount_FINWEBQEWS",myusername,mypassword);
+        try
+        {
+           if(id>0)
+           {
+               SearchCriteria searchProp = queryengine_ws.getSearchCriteria(id, true, credentials);
+               InputForTemplateResult input = new InputForTemplateResult();
+               ArrayOfSearchCriteriaProperties arrayofsearchcriteriaproperties = new ArrayOfSearchCriteriaProperties();
+               TemplateResultOptions options = new TemplateResultOptions();
+               options.setRemoveHiddenColumns(true);
+               input.setTemplateResultOptions(options);
+               input.setTemplateId(id);              
+               for(SearchCriteriaProperties scp : searchProp.getSearchCriteriaPropertiesList().getSearchCriteriaProperties())
+               {
+                   //activate 1 check columnsString columnname = scp.getColumnName();
+                  
+                   if(scp.getColumnName().equals("account_grp__1"))
+                   {
+                       scp.setFromValue(accountclass);
+                       arrayofsearchcriteriaproperties.getSearchCriteriaProperties().add(scp);
+                   }
+                   if(scp.getColumnName().equals("dim4"))
+                   {
+                       scp.setFromValue(workorder);
+                       arrayofsearchcriteriaproperties.getSearchCriteriaProperties().add(scp);
+                   
+                   }
+                   if(scp.getColumnName().equals("dim5"))
+                   {
+                       scp.setFromValue(entity);
+                       arrayofsearchcriteriaproperties.getSearchCriteriaProperties().add(scp);
+                   }
+                   //arrayofsearchcriteriaproperties.getSearchCriteriaProperties().add(scp);
+                   
+                   //activate 2response.add(columnname);
+                   
+                  
+               }
+
+               
+               input.setSearchCriteriaPropertiesList(arrayofsearchcriteriaproperties);
+               
+               
+               /**/TemplateResultAsXML results = queryengine_ws.getTemplateResultAsXML(input, credentials(myusername,mypassword));
+               
+               OCSFINWEBBean ocsfinwebbean = new OCSFINWEBBean();
+               
+               ocsfinwebbean.setXmlData(results.getTemplateResult());
+              
+               response.add(ocsfinwebbean);
+               
+               
+               
+           
+           }
+           else
+           {
+               throw new Exception("Cannot find browser template MainProjFINWEBQEWS");
+           
+           }
+            
+        
+        }
+        catch(Exception ex)
+        {
+            throw new Exception(ex);
+        
+        }
+        
+        return response;
+    
+    }
+    
+    public List getmainproj_entity(String param, String myusername, String mypassword)throws Exception
+    {
+        List response = new ArrayList();
+        long id = templateId("MainProjects_FINWEBQEWS",myusername,mypassword);
+        try
+        {
+           if(id>0)
+           {
+               SearchCriteria searchProp = queryengine_ws.getSearchCriteria(id, true, credentials);
+               InputForTemplateResult input = new InputForTemplateResult();
+               ArrayOfSearchCriteriaProperties arrayofsearchcriteriaproperties = new ArrayOfSearchCriteriaProperties();
+               TemplateResultOptions options = new TemplateResultOptions();
+               options.setRemoveHiddenColumns(true);
+               input.setTemplateResultOptions(options);
+               input.setTemplateId(id);
+               //SearchCriteriaProperties scp = new SearchCriteriaProperties();
+               //scp.setColumnName("Costc");
+               //scp.setIsPrompt(true);
+               //scp.setIsPrompt(true);
+               //scp.setFromValue("1101");
+               for(SearchCriteriaProperties scp : searchProp.getSearchCriteriaPropertiesList().getSearchCriteriaProperties())
+               {
+                   //String columnname = scp.getColumnName();
+                   if(scp.getColumnName().equals("dim5"))
+                   {
+                       scp.setFromValue(param);
+                       //arrayofsearchcriteriaproperties.getSearchCriteriaProperties().add(scp);
+                   
+                   }
+                   
+                   
+                   
                     
                    
                    
                    arrayofsearchcriteriaproperties.getSearchCriteriaProperties().add(scp);
+                   //response.add(columnname);
                    
                   
-               //}
+               }
+               //response.add(searchProp.getSearchCriteriaPropertiesList().);
+               //response.add(arrayofsearchcriteriaproperties.getSearchCriteriaProperties().get(0).getColumnName());
                input.setSearchCriteriaPropertiesList(arrayofsearchcriteriaproperties);
                
                
@@ -244,7 +570,7 @@ public class OCSFINWEBDAO_QEWS {
     {
         List response = new ArrayList();
         
-        long id = templateId("BudgetHolders_QEWS",myusername,mypassword);
+        long id = templateId("MainProjects_FINWEBQEWS",myusername,mypassword);
         
         try
         {

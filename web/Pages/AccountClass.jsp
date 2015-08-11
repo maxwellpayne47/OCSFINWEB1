@@ -1,9 +1,3 @@
-<%-- 
-    Document   : BudgetHolder
-    Created on : May 30, 2014, 11:04:04 AM
-    Author     : Maxwell Irungu
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib uri='http://java.sun.com/jsp/jstl/core' prefix='c'%> 
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
@@ -15,14 +9,15 @@
         <c:import url="includes.html"></c:import>  
         <title>Finance Web | Financial Statements</title>
         <script>
+            
             $(document).ready(function(){
-              loadmainprojects($("#costc_span").text(),""); 
-              
-              //alert($("#costc_span").text());
+              loadperaccount($("#accountclass_span").text(),$("#workorder_span").text(),$("#entity_span").text()); 
+              //alert($("#accountclass_span").text()+" "+$("#workorder_span").text()+" "+$("#entity_span").text());
             })
         </script>
     </head>
     <body>
+        <input type="hidden" id="">
     <div id="mainbody">
            <div id="titles">
                <c:import url="/Pages/links.html"></c:import> 
@@ -43,11 +38,11 @@
         <a id="username_span" href="#">Logged in as ${sessionScope.username}</a>
       </div>
       <div style="width:90%; position:relative; margin-left:auto; margin-right:auto;" class="panel panel-primary">      
-      <div class="panel-heading"><span id="info-span">View the Budget and Expenditure Breakdown</span><br>Budget Holder ID : <span id="costc_span">${param.costc}</span> </div>
+          <div class="panel-heading"><span id="info-span">View the Budget and Expenditure Breakdown</span><br>Account Class - <span id="accountclass_span">${param.ac}</span> Work Order - <span id="workorder_span"> <c:out value="${param.wo}"></c:out></span> Entity - <span id="entity_span"><c:out value="${param.et}"></c:out></span> </div>
       <table class="table table-condensed table-bordered table-hover" id="finweb_htmltbl" border="0">
         <thead id="finweb-header_htmltbl">
           <tr>
-            <td>Output\Task</td>
+            <td>Account</td>
             <td>Budget</td>
             <td>Actuals</td>
             <td>Commitments</td>

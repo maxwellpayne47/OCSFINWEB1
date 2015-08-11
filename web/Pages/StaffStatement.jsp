@@ -20,6 +20,7 @@
             })
                
         </script>
+        <script src="/OCSFINWEB/Js/dateformat.js"></script>
     </head>
     <body>
         
@@ -34,7 +35,7 @@
                   <h3 class="panel-title">Staff Details</h3>
                 </div>
                 <div class="panel-body">                  
-                    <table width="100%" class="table" border="0">
+                    <table cwidth="100%" class="table" id="mydetails_htmltbl" border="0">
                       <tr>
                         <td><span class="boldtexts">Staff Name: </span><span id="staffname_span" class="lessboldtexts"></span></td>
                         <td colspan="2"><span class="boldtexts">Account Number: </span><span id="staffaccount_span"  class="lessboldtexts"></span></td>
@@ -50,20 +51,22 @@
                 <h5 class="panel-title">My Staff Statement Details</h5>
             </div>
             <div class="panel-body">                     
-                <table width="100%" align="center" class="table table-bordered table-hover" border="0" id="mystatement_htmltbl">
-                    <thead>
+                <table swidth="100%" align="center" class="table table-bordered table-hover" border="0" id="staffstatement_htmltbl">
+                    <thead id="staffstatement_header_htmltbl">
                         <tr>
                           <td>Transaction No.</td>
                           <td>Invoice No.</td>
                           <td>Date</td>
-                          <td>Currency</td>
-                          <td>Amount</td>
-                          <td>USD Amount</td>
+                          <td>Expense Type</td>
+                          <td>Transaction Currency</td>
+                          <td>Amount in Transaction Currency</td>
+                          <td>Amount in USD</td>
                           <td>Description</td>
                         </tr>
                   </thead>
-                  <tbody>
+                  <tbody align="center">
                   <tr>
+                    <td>&nbsp;</td>
                     <td>&nbsp;</td>
                     <td>&nbsp;</td>
                     <td>&nbsp;</td>
@@ -73,6 +76,16 @@
                     <td><span id="desc_span"></span></td>
                   </tr>
                   </tbody>
+                  <tfoot id="staffstatement_footer_htmltbl">
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td></td>
+                  </tfoot>
                 </table>
                 </div>
         </div>

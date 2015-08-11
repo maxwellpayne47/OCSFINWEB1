@@ -79,11 +79,11 @@ public class StaffStatement_Servlet extends HttpServlet {
                 String username = sess.getAttribute("username").toString();
                 String password = sess.getAttribute("password").toString();
                 Object qewsresponse_my = qewsdao.mystatement(username,password);
-                String jsnmsg = gson.toJson(qewsresponse_my);
-                write.println(jsnmsg);
-                /*request.setAttribute("mystaffstatement", qewsresponse_my);
-                RequestDispatcher dispatch = request.getRequestDispatcher("Pages/StaffStatement.jsp");
-                dispatch.forward(request, response);*/
+                //String jsnmsg = gson.toJson(qewsresponse_my);
+                //write.println(jsnmsg);
+                /**/request.setAttribute("mydetails", qewsresponse_my);
+                RequestDispatcher dispatch = request.getRequestDispatcher("Pages/viewxml.jsp");
+                dispatch.forward(request, response);
             
             }             
            

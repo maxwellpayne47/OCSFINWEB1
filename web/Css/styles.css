@@ -81,7 +81,7 @@
     font-weight:  bold;
     sfont-style:italic;
 }
-#finweb-header_htmltbl
+#finweb-header_htmltbl, #staffstatement_header_htmltbl
 {
 	font-size:14px;	
 	font-weight:bold;
@@ -92,7 +92,7 @@
 	
 }
 
-#finweb-footer_htmltbl
+#finweb-footer_htmltbl, #staffstatement_footer_htmltbl
 {
 	font-size:14px;	
 	font-weight:bold;
@@ -142,6 +142,49 @@
 	text-decoration:underline;
 	color:#630;
 	font-size:14px;
+	
+}
+.drilldown_link
+{
+	color:#930;
+	text-decoration:underline;
+	font-size:14px;
+	
+}
+#image_holder_500
+{
+	position:absolute;
+	width:300px;
+	height:300px;
+	left:50px;
+	top:70px;
+	nbackground-color:#003;
+	background-image:url(/OCSFINWEB/Images/yaoming_f-no_face.jpg);
+	
+}
+#image_holder_404
+{
+	position:absolute;
+	width:300px;
+	height:300px;
+	left:50px;
+	top:70px;
+	nbackground-color:#003;
+	background-image:url(/OCSFINWEB/Images/yaoming_b-please.png);
+	background-repeat:no-repeat;
+        background-size:  cover;
+	
+}
+#errmsg_holder
+{
+	position:absolute;
+	width:550px;
+	height:auto;
+	nbackground-color:#060;
+	top:70px;
+	left:400px;
+	font-size:24px;
+	font-style:italic;
 	
 }
 

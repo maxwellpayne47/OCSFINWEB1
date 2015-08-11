@@ -29,7 +29,7 @@
  <form method="post" autocomplete="off" id="loginsubmit_form" action="/OCSFINWEB/Login.do">
       <table class="table table-condensed" style="table-layout:fixed;" border="0">        
           <tr>
-          <td>Username</td>
+          <td>DOMAIN\Username</td>
           <td><label for="username_textfield"></label>
               <input type="text" name="username_textfield" id="username_textfield"></td>
           <td><span style="color: red;"  id="errmsg_username_span"></span></td>          
@@ -41,7 +41,7 @@
           <td><span style="color: red" id="errmsg_password_span"></span></td>
         </tr>
         <tr>
-          <td colspan="3" align="center"><input type="submit" name="login_button" id="login_button" value="Login"></td>
+          <td colspan="3" align="center"><input type="submit" name="login_button" id="login_button" value="Login"><input type="hidden" name="returnurl_hidden" value="${param.returnurl}"></td>
           </tr>              
       </table>
       </form>

@@ -31,7 +31,7 @@ public class QueryEngine_WS {
         //TODO implement this method
         try 
         {
-            if(0==0)
+            if(1==0)
             {
                 com.agresso.services.queryengineservice.queryenginev201101.QueryEngineV201101 service = new com.agresso.services.queryengineservice.queryenginev201101.QueryEngineV201101();
                 com.agresso.services.queryengineservice.queryenginev201101.QueryEngineV201101Soap port = service.getQueryEngineV201101Soap();

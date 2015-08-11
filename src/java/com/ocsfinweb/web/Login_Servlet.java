@@ -88,7 +88,7 @@ public class Login_Servlet extends HttpServlet {
                 HttpSession session = request.getSession();
                 session.setAttribute("username",username);
                 session.setAttribute("password", password);
-                response.sendRedirect("/OCSFINWEB/index.jsp?msg=You have logged in successfully as "+username);
+                response.sendRedirect(request.getParameter("returnurl_hidden"));
             
             }
             else
@@ -99,7 +99,8 @@ public class Login_Servlet extends HttpServlet {
         }
         catch(Exception ex)
         {
-            throw new ServletException(ex);
+            //throw new ServletException(ex);
+            response.sendRedirect("/OCSFINWEB/login.jsp?errmsg=Wrong Username or Password. Please try again.");
         
         }
         

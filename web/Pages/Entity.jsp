@@ -16,9 +16,9 @@
         <title>Finance Web | Financial Statements</title>
         <script>
             $(document).ready(function(){
-              loadmainprojects($("#costc_span").text(),""); 
+              loadmainprojects("",$("#entity_span").text()); 
               
-              //alert($("#costc_span").text());
+              //alert();
             })
         </script>
     </head>
@@ -43,7 +43,7 @@
         <a id="username_span" href="#">Logged in as ${sessionScope.username}</a>
       </div>
       <div style="width:90%; position:relative; margin-left:auto; margin-right:auto;" class="panel panel-primary">      
-      <div class="panel-heading"><span id="info-span">View the Budget and Expenditure Breakdown</span><br>Budget Holder ID : <span id="costc_span">${param.costc}</span> </div>
+      <div class="panel-heading"><span id="info-span">View the Budget and Expenditure Breakdown</span><br> Entity : <span id="entity_span">${param.entity}</span> </div>
       <table class="table table-condensed table-bordered table-hover" id="finweb_htmltbl" border="0">
         <thead id="finweb-header_htmltbl">
           <tr>

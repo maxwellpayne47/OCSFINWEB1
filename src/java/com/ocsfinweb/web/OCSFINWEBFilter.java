@@ -108,7 +108,13 @@ public class OCSFINWEBFilter implements Filter {
         
         if(session == null || session.getAttribute("username")==null)
         {
-            res.sendRedirect("/OCSFINWEB/login.jsp?infmsg=You must login to continue");
+            String url=null;
+            if (request instanceof HttpServletRequest) 
+            {
+                url = ((HttpServletRequest)request).getRequestURL().toString();
+                //String queryString = ((HttpServletRequest)request).getQueryString();
+            }
+            res.sendRedirect("/OCSFINWEB/login.jsp?infmsg=You must login to continue&returnurl="+url);
         
         }
         else

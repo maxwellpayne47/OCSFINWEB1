@@ -68,20 +68,22 @@ public class FinanceWeb_Servlet extends HttpServlet {
         HttpSession sess = request.getSession();
          try
         {
+            String mode = request.getParameter("mode");
            
-             if(request.getParameter("param").equals("budgetholders"))            
-            {
-                String param = request.getParameter("param");
+             if(mode.equals("ac"))
+             {
+                //String bh = request.getParameter("bh");
+                //String mainproj = request.getParameter("cc");
                 String username = sess.getAttribute("username").toString();
                 String password = sess.getAttribute("password").toString();
-                Object qewsresponse_my = qewsdao.budgetholders(username, password);
-                //String jsnmsg = gson.toJson(qewsresponse_my);
+                Object qewsresponse = qewsdao.getperaccount("ECA","CORE-01C.5AB", "GBL001", username, password);
+                //String jsnmsg = gson.toJson(qewsresponse);
                 //write.println(jsnmsg);
-                /**/request.setAttribute("mydetails", qewsresponse_my);
+                /**/request.setAttribute("mydetails", qewsresponse);
                 RequestDispatcher dispatch = request.getRequestDispatcher("Pages/viewxml.jsp");
                 dispatch.forward(request, response);
-            
-            }
+             
+             }
            
         
         }
@@ -107,15 +109,82 @@ public class FinanceWeb_Servlet extends HttpServlet {
         Gson gson = new Gson();
         PrintWriter write = response.getWriter();
         HttpSession sess = request.getSession();
+        /*String username = sess.getAttribute("username").toString();
+        String password = sess.getAttribute("password").toString();*/
+        String username = "System";
+        String password = "ICRAF@system";
+        
          try
         {
+            String mode = request.getParameter("mode");
            
-             if(!request.getParameter("param").isEmpty())            
+             if(mode.equals("bh"))            
             {
+                
+                String costc = request.getParameter("cc");
+                String entity = request.getParameter("en");
+                
+                Object qewsresponse_my = qewsdao.getmainproj(costc,entity,username,password);
+                String jsnmsg = gson.toJson(qewsresponse_my);
+                write.println(jsnmsg);
+                /*request.setAttribute("mydetails", qewsresponse_my);
+                RequestDispatcher dispatch = request.getRequestDispatcher("Pages/viewxml.jsp");
+                dispatch.forward(request, response);*/
+            
+            }
+             
+             if(mode.equals("cc"))
+             {
+                String costc = request.getParameter("costc");
+                String mainproj = request.getParameter("mainproj");
+                String entity = request.getParameter("entity");
+                //String username = sess.getAttribute("username").toString();
+                //String password = sess.getAttribute("password").toString();
+                Object qewsresponse = qewsdao.getchargecodes(costc, mainproj, entity, username, password);
+                String jsnmsg = gson.toJson(qewsresponse);
+                write.println(jsnmsg);
+                /*request.setAttribute("mydetails", qewsresponse);
+                RequestDispatcher dispatch = request.getRequestDispatcher("Pages/viewxml.jsp");
+                dispatch.forward(request, response);*/
+                
+                 
+                 
+             
+             }
+             if(mode.equals("nc"))
+             {
+                String workorder = request.getParameter("workorder");
+                String entity = request.getParameter("entity");
+                //String username = sess.getAttribute("username").toString();
+                //String password = sess.getAttribute("password").toString();
+                Object qewsresponse = qewsdao.getperaccountclass(workorder, entity, username, password);
+                String jsnmsg = gson.toJson(qewsresponse);
+                write.println(jsnmsg);
+                /*request.setAttribute("mydetails", qewsresponse);
+                RequestDispatcher dispatch = request.getRequestDispatcher("Pages/viewxml.jsp");
+                dispatch.forward(request, response);*/
+             }
+             if(mode.equals("ac"))
+             {
+                String accountclass = request.getParameter("accountclass");
+                String workorder = request.getParameter("workorder");
+                String entity = request.getParameter("entity");
+                //String username = sess.getAttribute("username").toString();
+                //String password = sess.getAttribute("password").toString();
+                Object qewsresponse = qewsdao.getperaccount(accountclass,workorder, entity, username, password);
+                String jsnmsg = gson.toJson(qewsresponse);
+                write.println(jsnmsg);
+                /*request.setAttribute("mydetails", qewsresponse);
+                RequestDispatcher dispatch = request.getRequestDispatcher("Pages/viewxml.jsp");
+                dispatch.forward(request, response);*/
+             }
+              if(mode.equals("en"))            
+            {
+                
                 String param = request.getParameter("param");
-                String username = sess.getAttribute("username").toString();
-                String password = sess.getAttribute("password").toString();
-                Object qewsresponse_my = qewsdao.getmainproj(param,username,password);
+                //String username = sess.getAttribute("username").toString();
+                //String password = sess.getAttribute("password").toString();
+                Object qewsresponse_my = qewsdao.getmainproj_entity(param,username,password);
                 String jsnmsg = gson.toJson(qewsresponse_my);
                 write.println(jsnmsg);
                 /*request.setAttribute("mydetails", qewsresponse_my);
@@ -129,6 +198,8 @@ public class FinanceWeb_Servlet extends HttpServlet {
         catch(Exception ex)
         {
             throw new ServletException(ex);
+            //String jsnmsg = gson.toJson(new ServletException(ex));
+            //write.println(jsnmsg);
         
         }
     }
